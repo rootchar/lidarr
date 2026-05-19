@@ -21,7 +21,7 @@ namespace NzbDrone.Core.Update
         private readonly IPlatformInfo _platformInfo;
         private readonly IMainDatabase _mainDatabase;
 
-        public UpdatePackageProvider(IHttpClient httpClient, IReadarrCloudRequestBuilder requestBuilder, IPlatformInfo platformInfo, IMainDatabase mainDatabase)
+        public UpdatePackageProvider(IHttpClient httpClient, ILidarrCloudRequestBuilder requestBuilder, IPlatformInfo platformInfo, IMainDatabase mainDatabase)
         {
             _platformInfo = platformInfo;
             _requestBuilder = requestBuilder.Services;

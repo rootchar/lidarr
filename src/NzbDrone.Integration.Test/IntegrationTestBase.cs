@@ -4,6 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Lidarr.Api.V1.Author;
+using Lidarr.Api.V1.Blocklist;
+using Lidarr.Api.V1.Config;
+using Lidarr.Api.V1.DownloadClient;
+using Lidarr.Api.V1.History;
+using Lidarr.Api.V1.Profiles.Quality;
+using Lidarr.Api.V1.RootFolders;
+using Lidarr.Api.V1.System.Tasks;
+using Lidarr.Api.V1.Tags;
 using Microsoft.AspNetCore.SignalR.Client;
 using NLog;
 using NLog.Config;
@@ -16,15 +25,6 @@ using NzbDrone.Integration.Test.Client;
 using NzbDrone.SignalR;
 using NzbDrone.Test.Common;
 using NzbDrone.Test.Common.Categories;
-using Readarr.Api.V1.Author;
-using Readarr.Api.V1.Blocklist;
-using Readarr.Api.V1.Config;
-using Readarr.Api.V1.DownloadClient;
-using Readarr.Api.V1.History;
-using Readarr.Api.V1.Profiles.Quality;
-using Readarr.Api.V1.RootFolders;
-using Readarr.Api.V1.System.Tasks;
-using Readarr.Api.V1.Tags;
 using RestSharp;
 using RestSharp.Serializers.SystemTextJson;
 
@@ -283,9 +283,9 @@ namespace NzbDrone.Integration.Test
             return result;
         }
 
-        public void EnsureNoAuthor(string readarrId, string authorTitle)
+        public void EnsureNoAuthor(string lidarrId, string authorTitle)
         {
-            var result = Author.All().FirstOrDefault(v => v.ForeignAuthorId == readarrId);
+            var result = Author.All().FirstOrDefault(v => v.ForeignAuthorId == lidarrId);
 
             if (result != null)
             {

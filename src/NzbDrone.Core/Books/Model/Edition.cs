@@ -30,6 +30,7 @@ namespace NzbDrone.Core.Books
         public string Overview { get; set; }
         public string Format { get; set; }
         public bool IsEbook { get; set; }
+        public bool IsAudiobook => EditionFormatHelper.IsAudiobook(Format);
         public string Disambiguation { get; set; }
         public string Publisher { get; set; }
         public int PageCount { get; set; }
@@ -38,7 +39,7 @@ namespace NzbDrone.Core.Books
         public List<Links> Links { get; set; }
         public Ratings Ratings { get; set; }
 
-        // These are Readarr generated/config
+        // These are Lidarr generated/config
         public bool Monitored { get; set; }
         public bool ManualAdd { get; set; }
 

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Readarr.Api.V1.Books;
-using Readarr.Http;
+using Lidarr.Api.V1.Books;
+using Lidarr.Http;
 using RestSharp;
 
 namespace NzbDrone.Integration.Test.Client

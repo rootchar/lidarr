@@ -1,6 +1,6 @@
 # bookshelf
 
-This is a revival of [Readarr](https://github.com/Readarr/Readarr). The images
+This is a revival of [Lidarr](https://github.com/Lidarr/Lidarr). The images
 published are configured to use working Goodreads or Hardcover metadata out of
 the box.
 
@@ -18,12 +18,12 @@ The container listens on port 8787 and expects a volume mounted at `/config`.
 
 The `softcover` tags use [Goodreads](https://www.goodreads.com) as the metadata
 provider. The quality of this metadata is generally poor and contains a lot of
-slop. However, it is backward-compatible with existing Readarr databases and
+slop. However, it is backward-compatible with existing Lidarr databases and
 functionality like Goodreads list imports should continue to work normally.
 
 The `hardcover` tags use [Hardcover](https://hardcover.app/home) as a metadata
 provider. This metadata is higher quality but isn't backward-compatible; if
-you're already running Readarr you'll need to redeploy this from scratch.
+you're already running Lidarr you'll need to redeploy this from scratch.
 Goodreads list imports haven't been tested and likely don't work.
 
 ## Support
@@ -49,12 +49,12 @@ Already done
 
 ## Sponsors
 
-If you ever donated to [this](https://opencollective.com/readarr) project you
+If you ever donated to [this](https://opencollective.com/lidarr) project you
 should request a refund. Those people don't deserve your money.
 
 ### License
 
-The is a derivative work of the [Readarr](https://github.com/Readarr/Readarr)
+The is a derivative work of the [Lidarr](https://github.com/Lidarr/Lidarr)
 and [Prowlarr](https://github.com/Prowlarr/Prowlarr) projects which are both
 licensed [GPLv3](http://www.gnu.org/licenses/gpl.html). This project is
 therefore also licensed under the terms of GPLv3.

@@ -57,11 +57,11 @@ namespace NzbDrone.Core.Test.MetadataSource.Goodreads
             ExceptionVerification.IgnoreWarns();
         }
 
-        [TestCase("readarrid:")]
-        [TestCase("readarrid: 99999999999999999999")]
-        [TestCase("readarrid: 0")]
-        [TestCase("readarrid: -12")]
-        [TestCase("readarrid: aaaa")]
+        [TestCase("lidarrid:")]
+        [TestCase("lidarrid: 99999999999999999999")]
+        [TestCase("lidarrid: 0")]
+        [TestCase("lidarrid: -12")]
+        [TestCase("lidarrid: aaaa")]
         [TestCase("adjalkwdjkalwdjklawjdlKAJD")]
         public void no_author_search_result(string term)
         {

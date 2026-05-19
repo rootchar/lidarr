@@ -1,8 +1,8 @@
 using System.Linq;
 using FluentAssertions;
+using Lidarr.Api.V1.RootFolders;
 using NUnit.Framework;
 using NzbDrone.Core.Books;
-using Readarr.Api.V1.RootFolders;
 
 namespace NzbDrone.Integration.Test.ApiTests.WantedTests
 {

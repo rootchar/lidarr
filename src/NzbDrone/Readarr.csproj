@@ -4,17 +4,17 @@
     <TargetFrameworks>net6.0-windows</TargetFrameworks>
     <RuntimeIdentifiers>win-x64;win-x86</RuntimeIdentifiers>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>..\NzbDrone.Host\Readarr.ico</ApplicationIcon>
+    <ApplicationIcon>..\NzbDrone.Host\Lidarr.ico</ApplicationIcon>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Resources.Extensions" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NzbDrone.Host\Readarr.Host.csproj">
+    <ProjectReference Include="..\NzbDrone.Host\Lidarr.Host.csproj">
       <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>
-    <ProjectReference Include="..\NzbDrone.Windows\Readarr.Windows.csproj">
+    <ProjectReference Include="..\NzbDrone.Windows\Lidarr.Windows.csproj">
       <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>
   </ItemGroup>

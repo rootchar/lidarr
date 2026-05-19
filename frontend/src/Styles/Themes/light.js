@@ -1,4 +1,4 @@
-const readarrRed = '#ca302d';
+const lidarrRed = '#ca302d';
 const darkGray = '#888';
 const gray = '#adadad';
 const black = '#000';
@@ -22,10 +22,10 @@ module.exports = {
   successColor: '#27c24c',
   dangerColor: '#f05050',
   warningColor: '#ffa500',
-  infoColor: readarrRed,
+  infoColor: lidarrRed,
   purple,
   pink,
-  readarrRed,
+  lidarrRed,
   helpTextColor: '#909293',
   darkGray,
   gray,
@@ -33,7 +33,7 @@ module.exports = {
 
   // Theme Colors
 
-  themeRed: readarrRed,
+  themeRed: lidarrRed,
   themeAlternateRed: '#a41726',
   themeDarkRed: '#66001a',
   themeDarkColor: '#353535',
@@ -56,7 +56,7 @@ module.exports = {
   linkHoverColor: '#1b72e2',
 
   // Header
-  pageHeaderBackgroundColor: readarrRed,
+  pageHeaderBackgroundColor: lidarrRed,
 
   // Sidebar
 

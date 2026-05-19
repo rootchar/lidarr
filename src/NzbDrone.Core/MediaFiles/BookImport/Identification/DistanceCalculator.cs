@@ -24,7 +24,8 @@ namespace NzbDrone.Core.MediaFiles.BookImport.Identification
 
         private static readonly List<string> EbookFormats = new List<string> { "Kindle Edition", "Nook", "ebook" };
 
-        private static readonly List<string> AudiobookFormats = new List<string> { "Audiobook", "Audio CD", "Audio Cassette", "Audible Audio", "CD-ROM", "MP3 CD" };
+        // Shared with EditionFormatHelper — used here for distance scoring
+        private static readonly HashSet<string> AudiobookFormats = EditionFormatHelper.AudiobookFormats;
 
         public static Distance BookDistance(List<LocalBook> localTracks, Edition edition)
         {

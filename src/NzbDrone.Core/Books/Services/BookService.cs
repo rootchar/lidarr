@@ -74,7 +74,22 @@ namespace NzbDrone.Core.Books
             editions.ForEach(x => x.BookId = newBook.Id);
 
             _editionService.InsertMany(editions.Where(x => x.Id == 0).ToList());
-            _editionService.SetMonitored(editions.FirstOrDefault(x => x.Monitored) ?? editions.First());
+
+            // Set one monitored edition per format family independently
+            var textEdition = editions.FirstOrDefault(x => x.Monitored && !x.IsAudiobook)
+                ?? editions.FirstOrDefault(x => !x.IsAudiobook);
+            var audioEdition = editions.FirstOrDefault(x => x.Monitored && x.IsAudiobook)
+                ?? editions.FirstOrDefault(x => x.IsAudiobook);
+
+            if (textEdition != null)
+            {
+                _editionService.SetMonitored(textEdition);
+            }
+
+            if (audioEdition != null)
+            {
+                _editionService.SetMonitored(audioEdition);
+            }
 
             _eventAggregator.PublishEvent(new BookAddedEvent(GetBook(newBook.Id), doRefresh));
 

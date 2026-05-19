@@ -422,7 +422,7 @@
           "System.Drawing.Common": "6.0.0"
         }
       },
-      "readarr.common": {
+      "lidarr.common": {
         "type": "Project",
         "dependencies": {
           "DryIoc.dll": "[5.4.3, )",

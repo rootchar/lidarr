@@ -36,7 +36,7 @@ namespace NzbDrone.Core.Books
         public Ratings Ratings { get; set; }
         public DateTime? LastSearchTime { get; set; }
 
-        // These are Readarr generated/config
+        // These are Lidarr generated/config
         public string CleanTitle { get; set; }
         public bool Monitored { get; set; }
         public bool AnyEditionOk { get; set; }

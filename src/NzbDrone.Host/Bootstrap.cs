@@ -37,18 +37,18 @@ namespace NzbDrone.Host
 
         public static readonly List<string> ASSEMBLIES = new List<string>
         {
-            "Readarr.Host",
-            "Readarr.Core",
-            "Readarr.SignalR",
-            "Readarr.Api.V1",
-            "Readarr.Http"
+            "Lidarr.Host",
+            "Lidarr.Core",
+            "Lidarr.SignalR",
+            "Lidarr.Api.V1",
+            "Lidarr.Http"
         };
 
         public static void Start(string[] args, Action<IHostBuilder> trayCallback = null)
         {
             try
             {
-                Logger.Info("Starting Readarr - {0} - Version {1}",
+                Logger.Info("Starting Lidarr - {0} - Version {1}",
                             Environment.ProcessPath,
                             Assembly.GetExecutingAssembly().GetName().Version);
 
@@ -100,12 +100,12 @@ namespace NzbDrone.Host
                             })
                             .ConfigureServices(services =>
                             {
-                                services.Configure<PostgresOptions>(config.GetSection("Readarr:Postgres"));
-                                services.Configure<AppOptions>(config.GetSection("Readarr:App"));
-                                services.Configure<AuthOptions>(config.GetSection("Readarr:Auth"));
-                                services.Configure<ServerOptions>(config.GetSection("Readarr:Server"));
-                                services.Configure<LogOptions>(config.GetSection("Readarr:Log"));
-                                services.Configure<UpdateOptions>(config.GetSection("Readarr:Update"));
+                                services.Configure<PostgresOptions>(config.GetSection("Lidarr:Postgres"));
+                                services.Configure<AppOptions>(config.GetSection("Lidarr:App"));
+                                services.Configure<AuthOptions>(config.GetSection("Lidarr:Auth"));
+                                services.Configure<ServerOptions>(config.GetSection("Lidarr:Server"));
+                                services.Configure<LogOptions>(config.GetSection("Lidarr:Log"));
+                                services.Configure<UpdateOptions>(config.GetSection("Lidarr:Update"));
                             }).Build();
 
                         break;
@@ -114,11 +114,11 @@ namespace NzbDrone.Host
             }
             catch (InvalidConfigFileException ex)
             {
-                throw new ReadarrStartupException(ex);
+                throw new LidarrStartupException(ex);
             }
             catch (AccessDeniedConfigFileException ex)
             {
-                throw new ReadarrStartupException(ex);
+                throw new LidarrStartupException(ex);
             }
             catch (TerminateApplicationException ex)
             {
@@ -137,12 +137,12 @@ namespace NzbDrone.Host
         {
             var config = GetConfiguration(context);
 
-            var bindAddress = config.GetValue<string>($"Readarr:Server:{nameof(ServerOptions.BindAddress)}") ?? config.GetValue(nameof(ConfigFileProvider.BindAddress), "*");
-            var port = config.GetValue<int?>($"Readarr:Server:{nameof(ServerOptions.Port)}") ?? config.GetValue(nameof(ConfigFileProvider.Port), 8787);
-            var sslPort = config.GetValue<int?>($"Readarr:Server:{nameof(ServerOptions.SslPort)}") ?? config.GetValue(nameof(ConfigFileProvider.SslPort), 6868);
-            var enableSsl = config.GetValue<bool?>($"Readarr:Server:{nameof(ServerOptions.EnableSsl)}") ?? config.GetValue(nameof(ConfigFileProvider.EnableSsl), false);
-            var sslCertPath = config.GetValue<string>($"Readarr:Server:{nameof(ServerOptions.SslCertPath)}") ?? config.GetValue<string>(nameof(ConfigFileProvider.SslCertPath));
-            var sslCertPassword = config.GetValue<string>($"Readarr:Server:{nameof(ServerOptions.SslCertPassword)}") ?? config.GetValue<string>(nameof(ConfigFileProvider.SslCertPassword));
+            var bindAddress = config.GetValue<string>($"Lidarr:Server:{nameof(ServerOptions.BindAddress)}") ?? config.GetValue(nameof(ConfigFileProvider.BindAddress), "*");
+            var port = config.GetValue<int?>($"Lidarr:Server:{nameof(ServerOptions.Port)}") ?? config.GetValue(nameof(ConfigFileProvider.Port), 8787);
+            var sslPort = config.GetValue<int?>($"Lidarr:Server:{nameof(ServerOptions.SslPort)}") ?? config.GetValue(nameof(ConfigFileProvider.SslPort), 6868);
+            var enableSsl = config.GetValue<bool?>($"Lidarr:Server:{nameof(ServerOptions.EnableSsl)}") ?? config.GetValue(nameof(ConfigFileProvider.EnableSsl), false);
+            var sslCertPath = config.GetValue<string>($"Lidarr:Server:{nameof(ServerOptions.SslCertPath)}") ?? config.GetValue<string>(nameof(ConfigFileProvider.SslCertPath));
+            var sslCertPassword = config.GetValue<string>($"Lidarr:Server:{nameof(ServerOptions.SslCertPassword)}") ?? config.GetValue<string>(nameof(ConfigFileProvider.SslCertPassword));
 
             var urls = new List<string> { BuildUrl("http", bindAddress, port) };
 
@@ -164,12 +164,12 @@ namespace NzbDrone.Host
                 })
                 .ConfigureServices(services =>
                 {
-                    services.Configure<PostgresOptions>(config.GetSection("Readarr:Postgres"));
-                    services.Configure<AppOptions>(config.GetSection("Readarr:App"));
-                    services.Configure<AuthOptions>(config.GetSection("Readarr:Auth"));
-                    services.Configure<ServerOptions>(config.GetSection("Readarr:Server"));
-                    services.Configure<LogOptions>(config.GetSection("Readarr:Log"));
-                    services.Configure<UpdateOptions>(config.GetSection("Readarr:Update"));
+                    services.Configure<PostgresOptions>(config.GetSection("Lidarr:Postgres"));
+                    services.Configure<AppOptions>(config.GetSection("Lidarr:App"));
+                    services.Configure<AuthOptions>(config.GetSection("Lidarr:Auth"));
+                    services.Configure<ServerOptions>(config.GetSection("Lidarr:Server"));
+                    services.Configure<LogOptions>(config.GetSection("Lidarr:Log"));
+                    services.Configure<UpdateOptions>(config.GetSection("Lidarr:Update"));
                 })
                 .ConfigureWebHost(builder =>
                 {
@@ -254,7 +254,7 @@ namespace NzbDrone.Host
             {
                 Logger.Error(ex, ex.Message);
 
-                throw new InvalidConfigFileException($"{configPath} is corrupt or invalid. Please delete the config file and Readarr will recreate it.", ex);
+                throw new InvalidConfigFileException($"{configPath} is corrupt or invalid. Please delete the config file and Lidarr will recreate it.", ex);
             }
         }
 
@@ -275,11 +275,11 @@ namespace NzbDrone.Host
             {
                 if (ex.HResult == 0x2 || ex.HResult == 0x2006D080)
                 {
-                    throw new ReadarrStartupException(ex,
+                    throw new LidarrStartupException(ex,
                         $"The SSL certificate file {cert} does not exist");
                 }
 
-                throw new ReadarrStartupException(ex);
+                throw new LidarrStartupException(ex);
             }
 
             return certificate;

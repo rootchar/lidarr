@@ -129,10 +129,10 @@ namespace NzbDrone.Core.Datastore
 
                 if (OsInfo.IsOsx)
                 {
-                    throw new CorruptDatabaseException("Database file: {0} is corrupt, restore from backup if available. See: https://wiki.servarr.com/readarr/faq#i-use-readarr-on-a-mac-and-it-suddenly-stopped-working-what-happened", e, fileName);
+                    throw new CorruptDatabaseException("Database file: {0} is corrupt, restore from backup if available. See: https://wiki.servarr.com/lidarr/faq#i-use-lidarr-on-a-mac-and-it-suddenly-stopped-working-what-happened", e, fileName);
                 }
 
-                throw new CorruptDatabaseException("Database file: {0} is corrupt, restore from backup if available. See: https://wiki.servarr.com/readarr/faq#i-am-getting-an-error-database-disk-image-is-malformed", e, fileName);
+                throw new CorruptDatabaseException("Database file: {0} is corrupt, restore from backup if available. See: https://wiki.servarr.com/lidarr/faq#i-am-getting-an-error-database-disk-image-is-malformed", e, fileName);
             }
             catch (NpgsqlException e)
             {
@@ -158,18 +158,18 @@ namespace NzbDrone.Core.Datastore
                                 continue;
                             }
 
-                            throw new ReadarrStartupException(ex, "Error creating main database");
+                            throw new LidarrStartupException(ex, "Error creating main database");
                         }
                     }
                 }
                 else
                 {
-                    throw new ReadarrStartupException(e, "Error creating main database");
+                    throw new LidarrStartupException(e, "Error creating main database");
                 }
             }
             catch (Exception e)
             {
-                throw new ReadarrStartupException(e, "Error creating main database");
+                throw new LidarrStartupException(e, "Error creating main database");
             }
         }
 
@@ -201,7 +201,7 @@ namespace NzbDrone.Core.Datastore
             }
             catch (Exception e)
             {
-                throw new ReadarrStartupException(e, "Error creating log database");
+                throw new LidarrStartupException(e, "Error creating log database");
             }
         }
     }

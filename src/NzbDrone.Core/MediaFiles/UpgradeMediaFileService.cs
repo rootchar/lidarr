@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using NLog;
 using NzbDrone.Common.Disk;
@@ -47,7 +48,15 @@ namespace NzbDrone.Core.MediaFiles
         public BookFileMoveResult UpgradeBookFile(BookFile bookFile, LocalBook localBook, bool copyOnly = false)
         {
             var moveFileResult = new BookFileMoveResult();
-            var existingFiles = localBook.Book.BookFiles.Value;
+
+            // Only replace files in the same format family (audio vs text) to avoid
+            // clobbering an ebook when replacing an audiobook edition and vice versa
+            var incomingIsAudio = MediaFileExtensions.AudioExtensions.Contains(
+                Path.GetExtension(bookFile.Path), System.StringComparer.OrdinalIgnoreCase);
+            var existingFiles = localBook.Book.BookFiles.Value
+                .Where(f => MediaFileExtensions.AudioExtensions.Contains(
+                    Path.GetExtension(f.Path), System.StringComparer.OrdinalIgnoreCase) == incomingIsAudio)
+                .ToList();
 
             var rootFolderPath = _diskProvider.GetParentFolder(localBook.Author.Path);
             var rootFolder = _rootFolderService.GetBestRootFolder(rootFolderPath);

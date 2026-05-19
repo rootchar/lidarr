@@ -21,7 +21,7 @@ namespace NzbDrone.Core.Test.MetadataSource
         {
             Mocker.GetMock<IConfigService>()
                 .Setup(s => s.MetadataSource)
-                .Returns("http://api.readarr.com/api/testing/");
+                .Returns("http://api.lidarr.com/api/testing/");
         }
 
         [TestCase]

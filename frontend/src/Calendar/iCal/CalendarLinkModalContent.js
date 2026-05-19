@@ -23,7 +23,7 @@ function getUrls(state) {
     tags
   } = state;
 
-  let icalUrl = `${window.location.host}${window.Readarr.urlBase}/feed/v1/calendar/Readarr.ics?`;
+  let icalUrl = `${window.location.host}${window.Lidarr.urlBase}/feed/v1/calendar/Lidarr.ics?`;
 
   if (unmonitored) {
     icalUrl += 'unmonitored=true&';
@@ -33,7 +33,7 @@ function getUrls(state) {
     icalUrl += `tags=${tags.toString()}&`;
   }
 
-  icalUrl += `pastDays=${pastDays}&futureDays=${futureDays}&apikey=${encodeURIComponent(window.Readarr.apiKey)}`;
+  icalUrl += `pastDays=${pastDays}&futureDays=${futureDays}&apikey=${encodeURIComponent(window.Lidarr.apiKey)}`;
 
   const iCalHttpUrl = `${window.location.protocol}//${icalUrl}`;
   const iCalWebCalUrl = `webcal://${icalUrl}`;
@@ -108,7 +108,7 @@ class CalendarLinkModalContent extends Component {
     return (
       <ModalContent onModalClose={onModalClose}>
         <ModalHeader>
-          Readarr Calendar Feed
+          Lidarr Calendar Feed
         </ModalHeader>
 
         <ModalBody>

@@ -17,13 +17,13 @@
     <ReadarrOutputType Condition="$(MSBuildProjectName.Contains('.Test'))">Test</ReadarrOutputType>
     <ReadarrOutputType Condition="'$(MSBuildProjectName)'=='ServiceInstall'">Exe</ReadarrOutputType>
     <ReadarrOutputType Condition="'$(MSBuildProjectName)'=='ServiceUninstall'">Exe</ReadarrOutputType>
-    <ReadarrOutputType Condition="'$(MSBuildProjectName)'=='Readarr'">Exe</ReadarrOutputType>
-    <ReadarrOutputType Condition="'$(MSBuildProjectName)'=='Readarr.Console'">Exe</ReadarrOutputType>
-    <ReadarrOutputType Condition="'$(MSBuildProjectName)'=='Readarr.Update'">Update</ReadarrOutputType>
+    <ReadarrOutputType Condition="'$(MSBuildProjectName)'=='Lidarr'">Exe</ReadarrOutputType>
+    <ReadarrOutputType Condition="'$(MSBuildProjectName)'=='Lidarr.Console'">Exe</ReadarrOutputType>
+    <ReadarrOutputType Condition="'$(MSBuildProjectName)'=='Lidarr.Update'">Update</ReadarrOutputType>
 
     <!-- Specifies whether it's one of our own libraries -->
     <ReadarrProject>false</ReadarrProject>
-    <ReadarrProject Condition="$(MSBuildProjectName.StartsWith('Readarr'))">true</ReadarrProject>
+    <ReadarrProject Condition="$(MSBuildProjectName.StartsWith('Lidarr'))">true</ReadarrProject>
     <ReadarrProject Condition="$(MSBuildProjectName.StartsWith('ServiceInstall'))">true</ReadarrProject>
     <ReadarrProject Condition="$(MSBuildProjectName.StartsWith('ServiceUninstall'))">true</ReadarrProject>
 
@@ -49,7 +49,7 @@
     <!-- Output to _output and _tests respectively -->
     <OutputPath Condition="'$(ReadarrProject)'=='true'">$(ReadarrRootDir)_output\</OutputPath>
     <OutputPath Condition="'$(ReadarrOutputType)'=='Test'">$(ReadarrRootDir)_tests\</OutputPath>
-    <OutputPath Condition="'$(ReadarrOutputType)'=='Update'">$(ReadarrRootDir)_output\Readarr.Update\</OutputPath>
+    <OutputPath Condition="'$(ReadarrOutputType)'=='Update'">$(ReadarrRootDir)_output\Lidarr.Update\</OutputPath>
 
     <!-- Paths relative to project file for better readability -->
     <EnableBaseIntermediateOutputPathMismatchWarning>false</EnableBaseIntermediateOutputPathMismatchWarning>

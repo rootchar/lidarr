@@ -89,7 +89,7 @@ namespace NzbDrone.Core.ImportLists.Hardcover
                 .Accept(HttpAccept.Json)
                 .SetHeader("Authorization", $"Bearer {apiKey}")
                 .SetHeader("X-Api-Key", apiKey)
-                .SetHeader("User-Agent", "Readarr (Hardcover Import)")
+                .SetHeader("User-Agent", "Lidarr (Hardcover Import)")
                 .SetHeader("Content-Type", "application/json")
                 .KeepAlive()
                 .Build();

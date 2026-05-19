@@ -25,7 +25,7 @@ namespace NzbDrone.Core.IndexerSearch.Definitions
             Ensure.That(title, () => title).IsNotNullOrWhiteSpace();
 
             // Most VA books are listed as VA, not Various Authors
-            // TODO: Needed in Readarr??
+            // TODO: Needed in Lidarr??
             if (title == "Various Authors")
             {
                 title = "VA";

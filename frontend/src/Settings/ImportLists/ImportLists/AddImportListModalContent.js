@@ -54,7 +54,7 @@ class AddImportListModalContent extends Component {
 
                 <Alert kind={kinds.INFO}>
                   <div>
-                    {translate('ReadarrSupportsMultipleListsForImportingBooksAndAuthorsIntoTheDatabase')}
+                    {translate('LidarrSupportsMultipleListsForImportingBooksAndAuthorsIntoTheDatabase')}
                   </div>
                   <div>
                     {translate('ForMoreInformationOnTheIndividualListsClickOnTheInfoButtons')}

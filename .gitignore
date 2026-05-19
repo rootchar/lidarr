@@ -156,3 +156,4 @@ _temp_*/**/*
 
 _cache/
 _temp/
+install/*.tar.gz

@@ -6,7 +6,7 @@ let hasWarned = false;
 
 function checkActivationWarning() {
   if (!hasWarned) {
-    console.log('Activated ReadarrApi console helpers.');
+    console.log('Activated LidarrApi console helpers.');
     console.warn('Be warned: There will be no further confirmation checks.');
     hasWarned = true;
   }
@@ -115,6 +115,6 @@ class ConsoleApi {
   }
 }
 
-window.ReadarrApi = new ConsoleApi();
+window.LidarrApi = new ConsoleApi();
 
 export default ConsoleApi;

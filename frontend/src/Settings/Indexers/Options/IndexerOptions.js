@@ -100,7 +100,7 @@ function IndexerOptions(props) {
                 unit="minutes"
                 helpText={translate('RssSyncIntervalHelpText')}
                 helpTextWarning={translate('ThisWillApplyToAllIndexersPleaseFollowTheRulesSetForthByThem')}
-                helpLink="https://wiki.servarr.com/readarr/faq#how-does-readarr-work"
+                helpLink="https://wiki.servarr.com/lidarr/faq#how-does-lidarr-work"
                 onChange={onInputChange}
                 {...settings.rssSyncInterval}
               />

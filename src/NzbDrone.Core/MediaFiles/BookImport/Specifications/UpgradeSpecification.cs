@@ -38,6 +38,13 @@ namespace NzbDrone.Core.MediaFiles.BookImport.Specifications
 
             foreach (var bookFile in files)
             {
+                // Deliberate edition switch: user remonitored a different edition — bypass quality gate
+                if (bookFile.EditionId != item.Edition.Id && item.Edition.Monitored)
+                {
+                    _logger.Debug("Edition switch detected, skipping quality check for {0}", item.Path);
+                    continue;
+                }
+
                 var qualityCompare = qualityComparer.Compare(item.Quality.Quality, bookFile.Quality.Quality);
 
                 if (qualityCompare < 0)
